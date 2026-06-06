@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Getting Started with NestJS",
+    "content": "NestJS is a progressive Node.js framework for building efficient and scalable server-side applications.",
+    "createdAt": "2026-06-06T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Understanding Dependency Injection",
+    "content": "Dependency Injection is a design pattern used to implement inversion of control.",
+    "createdAt": "2026-06-06T11:00:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Introduction to Angular Signals",
+    "content": "Signals provide a reactive primitive for managing state in Angular applications.",
+    "createdAt": "2026-06-06T12:00:00Z"
+  }
+]
