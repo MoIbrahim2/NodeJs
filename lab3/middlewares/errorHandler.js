@@ -35,7 +35,7 @@ module.exports = (err, req, res, next) => {
   if (error.name === 'ValidationError') {
     error = handleValidationErrorDb(error);
   }
-
+  console.error('Error:', error);
   res.status(error.statusCode || 500).json({
     status: 'error',
     message: error.message,

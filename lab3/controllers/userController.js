@@ -14,15 +14,21 @@ exports.getUserById = async (req, res,next) => {
     }
 }
 
-exports.createUser = async (req, res) => {
-    const newUser = await userServices.createUser(req.body)
+exports.signUp = async (req, res,next) => {
+    const newUser = await userServices.signUp(req.body)
     if (!newUser) {
         next(new APIError(400, 'Failed to create user'))
     }
     res.status(201).json(newUser)
 }
 
-exports.updateUser = async (req, res) => {
+exports.login = async (req, res,next) => {
+    const { email, password } = req.body
+    const { user, token } = await userServices.login(email, password)
+    res.status(200).json({ user, token })
+}
+
+exports.updateUser = async (req, res,next) => {
     const updatedUser = await userServices.updateUser(req.params.id, req.body)
     if (updatedUser) {
         res.status(200).json(updatedUser)
