@@ -1,5 +1,7 @@
 const userServices = require('../services/userServices')
 const APIError = require('../utils/APIError')
+const emailService = require('../services/emailService')
+
 exports.getAllUsers = async (req, res) => {
     const users = await userServices.getAllUsers()
     res.status(200).json(users)
@@ -15,11 +17,20 @@ exports.getUserById = async (req, res,next) => {
 }
 
 exports.signUp = async (req, res,next) => {
-    const newUser = await userServices.signUp(req.body)
-    if (!newUser) {
-        next(new APIError(400, 'Failed to create user'))
+    const signupResult = await userServices.signUp(req.body)
+    if (!signupResult) {
+         return next(new APIError(400, 'Failed to create user'))
     }
-    res.status(201).json(newUser)
+    
+    // Send welcome email after user has been successfully created in MongoDB
+    await emailService.sendEmail(
+        'welcome',
+        { name: signupResult.name },
+        signupResult.email,
+        'Welcome to our platform'
+    )
+    
+    res.status(201).json(signupResult)
 }
 
 exports.login = async (req, res,next) => {

@@ -25,8 +25,7 @@ const signUp = async (userData) => {
     userData.password = await hashPassword(userData.password)
 
     user = await User.create(userData)
-    const token = signToken(user._id)
-    return { user, token }
+    return user
 }
 
 const login = async (email, password) => {
@@ -59,7 +58,7 @@ const deleteUser = async (id) => {
     return true
 }
 
-    
+
 module.exports = {
     getAllUsers,
     getUserById,

@@ -10,7 +10,7 @@ const { validateToken } = require('../middlewares/validateToken')
 
 
 
-router.get('/', validateToken,restrictTo('admin'), userController.getAllUsers)
+router.get('/', validateToken, restrictTo('admin'), userController.getAllUsers)
 router.get('/:id', userController.getUserById)
 router.post('/signup', validator(createUserSchema), userController.signUp)
 router.post('/login', validator(loginSchema), userController.login)

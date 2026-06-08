@@ -11,6 +11,7 @@ const errorHandler = require('./middlewares/errorHandler')
 
 const userRouter = require('./routers/userRouter')
 const postRouter = require('./routers/postRouter')
+const donationsRouter = require('./routers/donationsRouter')
 dotenv.config()
 
 // Security middlewares
@@ -35,6 +36,7 @@ app.use(express.json())
 // Routes
 app.use('/users', userRouter)
 app.use('/posts', postRouter)
+app.use('/donations', donationsRouter)
 
 // Error handling middleware
 app.use(errorHandler)
