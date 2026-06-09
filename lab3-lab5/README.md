@@ -1,4 +1,4 @@
-# Lab 3: Donation API Integration
+# Lab 3 - lab5: Donation API Integration
 
 This is an Express API that includes user authentication and a donation system integrated with Kashier payment gateway, complete with transactional email receipts.
 
